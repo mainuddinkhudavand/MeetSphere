@@ -19,8 +19,8 @@ export default function Authentication() {
 
     let handleAuth = async () => {
         // Client side validation
-        if (!username || username.trim().length < 3) {
-            setError("Username must be at least 3 characters long.");
+        if (!username || !username.includes("@") || username.trim().length < 5) {
+            setError("Please enter a valid email address.");
             return;
         }
         if (!password || password.length < 6) {
@@ -101,10 +101,10 @@ export default function Authentication() {
                     )}
 
                     <div className="inputGroup">
-                        <label>Username</label>
+                        <label>Email</label>
                         <input 
-                            type="text"
-                            placeholder="Enter username"
+                            type="email"
+                            placeholder="Enter your email"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
