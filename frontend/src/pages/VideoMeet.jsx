@@ -444,7 +444,7 @@ export default function VideoMeetComponent() {
                                             value={message} 
                                             onChange={(e) => setMessage(e.target.value)}
                                         />
-                                        <button type="submit" className={styles.btn-send}>
+                                        <button type="submit" className={styles['btn-send']}>
                                             ➔
                                         </button>
                                     </form>
