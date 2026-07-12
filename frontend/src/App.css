@@ -1883,6 +1883,67 @@
   }
 }
 
+/* ==========================================
+   RESPONSIVE AUTH & DASHBOARD MEDIA QUERIES
+   ========================================== */
+@media (max-width: 768px) {
+  .authCard {
+    width: 90%;
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .dashboardContainer {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  
+  .dashboardSidebar {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem 1.5rem;
+  }
+  
+  .sidebarMenu {
+    flex-direction: row;
+    margin-top: 0;
+    gap: 0.5rem;
+  }
+  
+  .menuItem {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    width: auto;
+  }
+  
+  .menuItem.active {
+    border-left: none;
+    border-bottom: 2px solid var(--primary);
+    border-radius: 8px;
+  }
+  
+  .sidebarFooter {
+    border-top: none;
+    padding-top: 0;
+  }
+  
+  .dashboardMain {
+    padding: 1.5rem;
+  }
+  
+  .actionGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboardBottomGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .navBar {
   display: flex;
   align-items: center;
