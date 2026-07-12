@@ -256,7 +256,9 @@ export default function VideoMeetComponent() {
             return;
         }
 
-        socketRef.current.emit('chat-message', message, username);
+        if (socketRef.current) {
+            socketRef.current.emit('chat-message', message, username);
+        }
         setMessage("");
     };
 
