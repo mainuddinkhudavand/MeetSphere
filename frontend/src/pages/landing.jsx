@@ -264,6 +264,46 @@ export default function LandingPage() {
                 </div>
             </section>
 
+            {/* How It Works Section */}
+            <section id="how-it-works" className="howItWorksSection">
+                <div className="sectionHeader">
+                    <h2>Simple, <span className="text-gradient">Yet Powerful</span> Workflow</h2>
+                    <p>Get your team together in three straightforward steps.</p>
+                </div>
+
+                <div className="roadmapContainer">
+                    <div className="roadmapStep">
+                        <div className="roadmapContent">
+                            <span className="roadmapNumber">1</span>
+                            <h3>Create an Account</h3>
+                            <p>Register a username and password. Keep all your past activities, customized settings, and logs synchronized in your user workspace.</p>
+                        </div>
+                        <div className="roadmapDot"></div>
+                        <div style={{ width: '42%' }}></div>
+                    </div>
+
+                    <div className="roadmapStep">
+                        <div style={{ width: '42%' }}></div>
+                        <div className="roadmapDot"></div>
+                        <div className="roadmapContent">
+                            <span className="roadmapNumber">2</span>
+                            <h3>Generate or Enter Code</h3>
+                            <p>Generate a unique meeting room identifier code instantly with one click, or type a code provided by a teammate to join a room.</p>
+                        </div>
+                    </div>
+
+                    <div className="roadmapStep">
+                        <div className="roadmapContent">
+                            <span className="roadmapNumber">3</span>
+                            <h3>Start Collaborating</h3>
+                            <p>Share your screen, chat with peers, select audio/video input devices, and collaborate seamlessly in HD quality.</p>
+                        </div>
+                        <div className="roadmapDot"></div>
+                        <div style={{ width: '42%' }}></div>
+                    </div>
+                </div>
+            </section>
+
         </div>
     )
 }
