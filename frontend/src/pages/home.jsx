@@ -7,6 +7,8 @@ import { AuthContext } from '../contexts/AuthContext';
 function HomeComponent() {
     let navigate = useNavigate();
     const [meetingCode, setMeetingCode] = useState("");
+    const [generatedCode, setGeneratedCode] = useState("");
+    const [copied, setCopied] = useState(false);
     const { addToUserHistory } = useContext(AuthContext);
 
     let handleJoinVideoCall = async () => {
@@ -92,17 +94,47 @@ function HomeComponent() {
                         <h3>Host Instant Meeting</h3>
                         <p>Generate a unique meeting room identifier code instantly and invite your team to join.</p>
                         <div className="cardDivider"></div>
-                        <button 
-                            className="btn-dashboard-action" 
-                            onClick={() => {
-                                // Generate a random 6-character room code
-                                const code = Math.random().toString(36).substring(2, 8).toUpperCase();
-                                setMeetingCode(code);
-                                alert(`Meeting code generated: ${code}. You can now join or copy it to share!`);
-                            }}
-                        >
-                            Generate Meeting Code
-                        </button>
+                        {generatedCode ? (
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', width: '100%' }}>
+                                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                                    <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Room Code:</span>
+                                    <strong style={{ fontSize: '1.2rem', color: 'var(--primary)', letterSpacing: '0.05em' }}>{generatedCode}</strong>
+                                </div>
+                                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                                    <button 
+                                        className="btn-dashboard-action"
+                                        onClick={async () => {
+                                            setMeetingCode(generatedCode);
+                                            await addToUserHistory(generatedCode);
+                                            navigate(`/${generatedCode}`);
+                                        }}
+                                        style={{ flex: 1 }}
+                                    >
+                                        Start Call
+                                    </button>
+                                    <button 
+                                        className="btn-dashboard-sec"
+                                        onClick={() => {
+                                            navigator.clipboard.writeText(generatedCode);
+                                            setCopied(true);
+                                            setTimeout(() => setCopied(false), 2000);
+                                        }}
+                                    >
+                                        {copied ? "Copied! ✓" : "Copy Code"}
+                                    </button>
+                                </div>
+                            </div>
+                        ) : (
+                            <button 
+                                className="btn-dashboard-action" 
+                                onClick={() => {
+                                    const code = Math.random().toString(36).substring(2, 8).toUpperCase();
+                                    setGeneratedCode(code);
+                                }}
+                            >
+                                Generate Meeting Code
+                            </button>
+                        )}
                     </div>
 
                     <div className="actionCard">
