@@ -1,10 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../App.css"
 import { Link, useNavigate } from 'react-router-dom'
+
 export default function LandingPage() {
-
-
     const router = useNavigate();
+    
+    // Interactive Demo States
+    const [demoMic, setDemoMic] = useState(true);
+    const [demoCam, setDemoCam] = useState(true);
+    const [demoShare, setDemoShare] = useState(false);
+    const [chatMessages, setChatMessages] = useState([
+        { name: 'Sarah', text: 'Hey there! How is the video quality?', self: false },
+        { name: 'Alex', text: 'It looks incredibly smooth 🚀', self: false }
+    ]);
+    const [chatInput, setChatInput] = useState('');
+
+    const handleSendDemoChat = (e) => {
+        e.preventDefault();
+        if (!chatInput.trim()) return;
+
+        const newUserMsg = { name: 'You', text: chatInput, self: true };
+        setChatMessages(prev => [...prev, newUserMsg]);
+        const userMsgText = chatInput;
+        setChatInput('');
+
+        // Simulate teammate response
+        setTimeout(() => {
+            let replyText = "Awesome! MeetSphere looks super fast.";
+            if (userMsgText.toLowerCase().includes("hello") || userMsgText.toLowerCase().includes("hi")) {
+                replyText = "Hey! Welcome to the MeetSphere interactive demo. Try toggling your mic or camera!";
+            } else if (userMsgText.toLowerCase().includes("work") || userMsgText.toLowerCase().includes("test")) {
+                replyText = "Everything is working flawlessly. The design feels super clean!";
+            } else if (userMsgText.toLowerCase().includes("video") || userMsgText.toLowerCase().includes("cam")) {
+                replyText = "The HD video frame rates are incredibly high!";
+            }
+            setChatMessages(prev => [...prev, { name: 'Alex', text: replyText, self: false }]);
+        }, 1000);
+    };
 
     return (
         <div className='landingPageContainer'>
@@ -80,8 +112,113 @@ export default function LandingPage() {
                 </div>
             </header>
 
+            {/* Interactive Demo Section */}
+            <section id="demo" className="demoSection">
+                <div className="sectionHeader">
+                    <h2>Experience the <span className="text-gradient">Real-Time</span> Magic</h2>
+                    <p>Try out the mock room controls below. Toggle camera, mute audio, and interact with the chat panel.</p>
+                </div>
 
+                <div className="demoContainer">
+                    <div className="demoVideoArea">
+                        <div className="demoHeader">
+                            <div className="meetingBadge">
+                                <span className="liveDot"></span>
+                                Live Demo Room
+                            </div>
+                            <div className="meetingCodeDisplay">Room Code: MS-DEMO-2026</div>
+                        </div>
+
+                        <div className="demoGrid">
+                            <div className={`videoFeed ${demoCam ? 'active' : ''}`}>
+                                {demoCam ? (
+                                    demoShare ? (
+                                        <div className="videoWaveform">
+                                            <span style={{ fontSize: '3rem' }}>🖥️</span>
+                                            <p style={{ position: 'absolute', bottom: '35%', fontSize: '0.9rem', color: 'var(--text-muted)' }}>Sharing your screen...</p>
+                                        </div>
+                                    ) : (
+                                        <div className="videoWaveform" style={{ background: '#08081a' }}>
+                                            <div className="avatarFallback primary">You</div>
+                                        </div>
+                                    )
+                                ) : (
+                                    <div className="videoWaveform" style={{ background: '#020205' }}>
+                                        <span style={{ color: 'var(--text-dim)', fontSize: '0.9rem' }}>Camera is Off</span>
+                                    </div>
+                                )}
+                                <span className="feedName">You (Presenter)</span>
+                                <div className={`micIndicator ${demoMic ? '' : 'muted'}`}>
+                                    {demoMic ? '🎙️' : '🚫'}
+                                </div>
+                            </div>
+
+                            <div className="videoFeed">
+                                <div className="videoWaveform" style={{ background: '#0a0a24' }}>
+                                    <div className="avatarFallback">A</div>
+                                </div>
+                                <span className="feedName">Alex (Teammate)</span>
+                                <div className="micIndicator">🎙️</div>
+                            </div>
+                        </div>
+
+                        <div className="demoControls">
+                            <button 
+                                className={`controlBtn ${demoMic ? 'active' : ''}`} 
+                                onClick={() => setDemoMic(!demoMic)}
+                                title={demoMic ? "Mute Mic" : "Unmute Mic"}
+                            >
+                                {demoMic ? '🎙️' : '🚫'}
+                            </button>
+                            <button 
+                                className={`controlBtn ${demoCam ? 'active' : ''}`} 
+                                onClick={() => setDemoCam(!demoCam)}
+                                title={demoCam ? "Turn Off Video" : "Turn On Video"}
+                            >
+                                {demoCam ? '📹' : '🚫'}
+                            </button>
+                            <button 
+                                className={`controlBtn ${demoShare ? 'active' : ''}`} 
+                                onClick={() => setDemoShare(!demoShare)}
+                                title={demoShare ? "Stop Screen Share" : "Share Screen"}
+                            >
+                                {demoShare ? '⏹️' : '🖥️'}
+                            </button>
+                            <button className="controlBtn hangup" onClick={() => alert("To join or host real meetings, please register or sign in!")}>
+                                📞
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="demoChatPanel">
+                        <div className="chatPanelHeader">
+                            <h4>Meeting Chat</h4>
+                        </div>
+                        <div className="chatMessages">
+                            {chatMessages.map((msg, i) => (
+                                <div key={i} className={`chatMsg ${msg.self ? 'self' : ''}`}>
+                                    <span className="msgName">{msg.name}</span>
+                                    <span className="msgText">{msg.text}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <form onSubmit={handleSendDemoChat} className="chatInputArea">
+                            <input 
+                                type="text" 
+                                className="chatInput" 
+                                placeholder="Type a message..." 
+                                value={chatInput}
+                                onChange={(e) => setChatInput(e.target.value)}
+                            />
+                            <button type="submit" className="chatSendBtn">
+                                ➔
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
 
         </div>
     )
 }
+
