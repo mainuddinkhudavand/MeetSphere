@@ -31,21 +31,54 @@ export default function LandingPage() {
             </nav>
 
 
-            <div className="landingMainContainer">
-                <div>
-                    <h1><span style={{ color: "#FF9839" }}>Connect</span> with your loved Ones</h1>
-
-                    <p>Cover a distance by MeetSphere</p>
-                    <div role='button'>
-                        <Link to={"/auth"}>Get Started</Link>
+            <header className="heroSection">
+                <div className="heroLeft">
+                    <div className="heroBadge">
+                        <span className="pulseDot"></span>
+                        MeetSphere 2.0 is now live
+                    </div>
+                    <h1>
+                        <span className="text-gradient">Connect</span> with your Teams and Loved Ones instantly
+                    </h1>
+                    <p>
+                        High-quality video conferencing, screen sharing, and real-time collaboration. MeetSphere bridges the gap with zero hassle.
+                    </p>
+                    <div className="heroButtons">
+                        <Link to="/auth" className="btn-hero-primary">
+                            Get Started
+                        </Link>
+                        <a href="#demo" className="btn-hero-secondary">
+                            Live Demo Preview
+                        </a>
+                    </div>
+                    <div className="heroStats">
+                        <div className="statItem">
+                            <span className="statValue">100%</span>
+                            <span className="statLabel">Free Tier</span>
+                        </div>
+                        <div className="statItem">
+                            <span className="statValue">HD</span>
+                            <span className="statLabel">Quality Call</span>
+                        </div>
+                        <div className="statItem">
+                            <span className="statValue">256-bit</span>
+                            <span className="statLabel">Secure SSL</span>
+                        </div>
                     </div>
                 </div>
-                <div>
-
-                    <img src="/mobile.png" alt="" />
-
+                <div className="heroRight">
+                    <div className="heroImageWrapper animate-float">
+                        <img src="/mobile.png" alt="MeetSphere Mobile App preview" />
+                        <div className="heroFloatingCard">
+                            <div className="avatarRing">MS</div>
+                            <div>
+                                <h4 style={{ margin: 0, fontSize: '0.9rem', color: 'white' }}>Meeting Room Active</h4>
+                                <p style={{ margin: 0, fontSize: '0.75rem', color: 'var(--text-muted)' }}>Join with 5 friends</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </header>
 
 
 

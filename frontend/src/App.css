@@ -110,36 +110,193 @@
   box-shadow: 0 6px 20px rgba(255, 152, 57, 0.4);
 }
 
-/* Old landing main container - to be replaced next */
-.landingMainContainer {
+/* Hero Section Styling */
+.heroSection {
   display: flex;
   justify-content: space-between;
-  padding-inline: 3rem;
-  height: 80vh;
   align-items: center;
+  padding: 5rem 3rem;
+  min-height: 85vh;
+  gap: 4rem;
+  position: relative;
 }
 
-.landingMainContainer>div:nth-child(1) {
-  font-size: 2.2rem;
+.heroLeft {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 10;
 }
 
-.landingMainContainer>div:nth-child(1) div[role='button'] {
-  background: #D97500;
+.heroBadge {
   width: fit-content;
-  padding: 1rem;
-  border-radius: 20px;
-  margin-top: 1.9rem;
+  background: rgba(255, 152, 57, 0.1);
+  border: 1px solid rgba(255, 152, 57, 0.2);
+  color: var(--primary);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.landingMainContainer>div:nth-child(1) div[role='button'] a {
+.heroBadge .pulseDot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  animation: pulse-glow 2s infinite;
+}
+
+.heroLeft h1 {
+  font-size: 3.5rem;
+  line-height: 1.15;
+  font-weight: 800;
+  margin: 0;
+}
+
+.heroLeft p {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 550px;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.btn-hero-primary {
+  color: #080710;
+  background: var(--primary-gradient);
+  border: none;
+  padding: 0.9rem 2.2rem;
+  border-radius: 50px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(255, 152, 57, 0.3);
+  transition: all 0.3s ease;
   text-decoration: none;
-  color: white;
-  font-size: 1.7rem;
+  display: inline-block;
+  text-align: center;
 }
 
-.landingMainContainer>div:nth-child(2) img {
-  height: 70vh;
-  width: auto;
+.btn-hero-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 152, 57, 0.5);
+}
+
+.btn-hero-secondary {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.9rem 2.2rem;
+  border-radius: 50px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-hero-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+.heroStats {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 2rem;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.statLabel {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.2rem;
+}
+
+.heroRight {
+  flex: 0.8;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.heroImageWrapper {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 152, 57, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+  padding: 10px;
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.5s ease;
+}
+
+.heroImageWrapper:hover {
+  transform: rotate(-1deg) scale(1.02);
+}
+
+.heroRight img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+}
+
+.heroFloatingCard {
+  position: absolute;
+  bottom: 30px;
+  left: -40px;
+  background: rgba(15, 15, 25, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-md);
+  animation: float 4s ease-in-out infinite;
+}
+
+.avatarRing {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #080710;
 }
 
 .navBar {
