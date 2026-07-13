@@ -528,6 +528,60 @@ export default function LandingPage() {
                 </div>
             </section>
 
+            {/* Modern Footer Section */}
+            <footer className="footerSection">
+                <div className="footerGrid">
+                    <div className="footerBrand">
+                        <h3>MeetSphere</h3>
+                        <p>Bridging distances with high fidelity audio/video conferencing solutions.</p>
+                        <div className="footerSocials">
+                            <a href="#twitter" className="socialIcon">𝕏</a>
+                            <a href="#github" className="socialIcon">🐙</a>
+                            <a href="#linkedin" className="socialIcon">in</a>
+                        </div>
+                    </div>
+
+                    <div className="footerCol">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#pricing">Pricing</a></li>
+                            <li><a href="#demo">Live Demo</a></li>
+                            <li><a href="#updates">Updates</a></li>
+                        </ul>
+                    </div>
+
+                    <div className="footerCol">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#documentation">Documentation</a></li>
+                            <li><a href="#support">Get Support</a></li>
+                            <li><a href="#terms">Terms of Service</a></li>
+                            <li><a href="#privacy">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+
+                    <div className="footerCol">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#careers">Careers</a></li>
+                            <li><a href="#blog">Blog</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div className="footerBottom">
+                    <p>&copy; {new Date().getFullYear()} MeetSphere Inc. All rights reserved.</p>
+                    <div className="footerLinks">
+                        <a href="#privacy">Privacy</a>
+                        <a href="#terms">Terms</a>
+                        <a href="#cookies">Cookies</a>
+                    </div>
+                </div>
+            </footer>
+
         </div>
     )
 }
