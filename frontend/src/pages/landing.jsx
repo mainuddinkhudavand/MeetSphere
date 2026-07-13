@@ -15,6 +15,37 @@ export default function LandingPage() {
     ]);
     const [chatInput, setChatInput] = useState('');
 
+    // Testimonial States
+    const testimonials = [
+        {
+            quote: "MeetSphere has completely transformed how our remote team communicates. The latency is practically zero, and setup takes seconds.",
+            name: "Emily Watson",
+            role: "Product Lead at VeloTech",
+            avatar: "EW"
+        },
+        {
+            quote: "I use MeetSphere for tutoring sessions. The interactive chat and flawless screen sharing make teaching online an absolute breeze.",
+            name: "Marcus Aurelius",
+            role: "Online Educator",
+            avatar: "MA"
+        },
+        {
+            quote: "Finally, a video call platform that doesn't eat up my memory. Super light, glassmorphic UI looks stunning too!",
+            name: "Sophia Chen",
+            role: "UX Researcher",
+            avatar: "SC"
+        }
+    ];
+    const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+    const nextTestimonial = () => {
+        setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    };
+
+    const prevTestimonial = () => {
+        setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    };
+
     const handleSendDemoChat = (e) => {
         e.preventDefault();
         if (!chatInput.trim()) return;
@@ -300,6 +331,40 @@ export default function LandingPage() {
                         </div>
                         <div className="roadmapDot"></div>
                         <div style={{ width: '42%' }}></div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Testimonials Slider Section */}
+            <section className="testimonialsSection">
+                <div className="sectionHeader">
+                    <h2>Loved by <span className="text-gradient">Teams Worldwide</span></h2>
+                    <p>Read what our creators and companies say about their experiences.</p>
+                </div>
+
+                <div className="sliderContainer">
+                    <div className="testimonialCard">
+                        <p className="testimonialQuote">
+                            "{testimonials[currentTestimonial].quote}"
+                        </p>
+                        <div className="testimonialUser">
+                            <div className="userAvatar">
+                                {testimonials[currentTestimonial].avatar}
+                            </div>
+                            <div className="userMeta">
+                                <h4>{testimonials[currentTestimonial].name}</h4>
+                                <p>{testimonials[currentTestimonial].role}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="sliderControls">
+                        <button className="sliderBtn" onClick={prevTestimonial}>
+                            ◀
+                        </button>
+                        <button className="sliderBtn" onClick={nextTestimonial}>
+                            ▶
+                        </button>
                     </div>
                 </div>
             </section>
