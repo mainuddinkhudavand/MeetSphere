@@ -218,6 +218,52 @@ export default function LandingPage() {
                 </div>
             </section>
 
+            {/* Features Grid Section */}
+            <section id="features" className="featuresSection">
+                <div className="sectionHeader">
+                    <h2>Everything You Need, <span className="text-gradient">Fully Optimized</span></h2>
+                    <p>MeetSphere offers a wide array of tools to ensure your meetings run flawlessly.</p>
+                </div>
+
+                <div className="featuresGrid">
+                    <div className="featureCard">
+                        <div className="featureIcon">📹</div>
+                        <h3>HD Video & Audio</h3>
+                        <p>Stream meetings in full high-definition video and audio with auto-adjusting bitrate to match your connection speed.</p>
+                    </div>
+
+                    <div className="featureCard">
+                        <div className="featureIcon">🖥️</div>
+                        <h3>Instant Screen Share</h3>
+                        <p>Share your full screen, specific app windows, or browser tabs with other attendees in real-time with ultra-low latency.</p>
+                    </div>
+
+                    <div className="featureCard">
+                        <div className="featureIcon">💬</div>
+                        <h3>Real-time Chat Sidebar</h3>
+                        <p>Chat with participants, send resource links, or write quick meeting notes in a beautifully designed sidebar workspace.</p>
+                    </div>
+
+                    <div className="featureCard">
+                        <div className="featureIcon">🔒</div>
+                        <h3>Secure Connections</h3>
+                        <p>Rest easy knowing all WebRTC connections are authenticated and encrypted to prevent unwanted intruders.</p>
+                    </div>
+
+                    <div className="featureCard">
+                        <div className="featureIcon">🕒</div>
+                        <h3>Meeting History Log</h3>
+                        <p>Track your past meeting timelines, joining timestamps, and session history inside a clean, modern user dashboard.</p>
+                    </div>
+
+                    <div className="featureCard">
+                        <div className="featureIcon">⚡</div>
+                        <h3>Quick Join Codes</h3>
+                        <p>Join any active room code directly from your dashboard or guest link with zero sign-up required for guests.</p>
+                    </div>
+                </div>
+            </section>
+
         </div>
     )
 }
