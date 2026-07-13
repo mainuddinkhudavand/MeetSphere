@@ -1,33 +1,116 @@
+/* Landing Page Container with animated mesh gradient */
 .landingPageContainer {
-  width: 100vw;
-  height: 100vh;
-  background: url("/public/background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: white;
+  width: 100%;
+  min-height: 100vh;
+  background: radial-gradient(circle at 10% 20%, rgba(255, 152, 57, 0.06) 0%, transparent 50%),
+              radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
+              #080710;
+  color: var(--text-main);
+  overflow-x: hidden;
+  padding-top: 75px; /* Navbar spacing */
 }
 
+/* Glassmorphic Navbar */
 .landingPageContainer nav {
-  padding-inline: 1.2rem;
-  padding-block: 1.6rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 75px;
+  padding-inline: 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  background: rgba(8, 7, 16, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
 
-.landingPageContainer nav h2 {
-  font-size: 1.8rem;
-  font-weight: 500;
+.navHeader h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navHeader h2::before {
+  content: "🌐";
+  font-size: 1.5rem;
 }
 
 .landingPageContainer nav .navlist {
   display: flex;
-  gap: 1.6rem;
-  cursor: pointer;
-
+  align-items: center;
+  gap: 2.5rem;
 }
 
+.navLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.navLinks a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navLinks a:hover {
+  color: var(--primary);
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-guest {
+  color: var(--text-main);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.55rem 1.25rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-guest:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-login {
+  color: #080710;
+  background: var(--primary-gradient);
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 152, 57, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 152, 57, 0.4);
+}
+
+/* Old landing main container - to be replaced next */
 .landingMainContainer {
   display: flex;
   justify-content: space-between;

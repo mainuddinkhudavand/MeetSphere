@@ -9,22 +9,23 @@ export default function LandingPage() {
     return (
         <div className='landingPageContainer'>
             <nav>
-                <div className='navHeader'>
+                <div className='navHeader' onClick={() => router("/")}>
                     <h2>MeetSphere</h2>
                 </div>
                 <div className='navlist'>
-                    <p onClick={() => {
-                        router("/aljk23")
-                    }}>Join as Guest</p>
-                    <p onClick={() => {
-                        router("/auth")
-
-                    }}>Register</p>
-                    <div onClick={() => {
-                        router("/auth")
-
-                    }} role='button'>
-                        <p>Login</p>
+                    <div className='navLinks'>
+                        <a href='#features'>Features</a>
+                        <a href='#how-it-works'>How It Works</a>
+                        <a href='#pricing'>Pricing</a>
+                        <a href='#faqs'>FAQs</a>
+                    </div>
+                    <div className='navActions'>
+                        <button className='btn-guest' onClick={() => router("/guest-meeting-room-preview")}>
+                            Join as Guest
+                        </button>
+                        <button className='btn-login' onClick={() => router("/auth")}>
+                            Login / Register
+                        </button>
                     </div>
                 </div>
             </nav>
