@@ -37,6 +37,7 @@ export default function LandingPage() {
         }
     ];
     const [currentTestimonial, setCurrentTestimonial] = useState(0);
+    const [billingCycle, setBillingCycle] = useState('monthly');
 
     const nextTestimonial = () => {
         setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
@@ -365,6 +366,79 @@ export default function LandingPage() {
                         <button className="sliderBtn" onClick={nextTestimonial}>
                             ▶
                         </button>
+                    </div>
+                </div>
+            </section>
+
+            {/* Pricing Section */}
+            <section id="pricing" className="pricingSection">
+                <div className="sectionHeader">
+                    <h2>Flexible Plans for <span className="text-gradient">Every Team</span></h2>
+                    <p>Get started for free or upgrade for advanced security, transcripts, and unlimited participant logs.</p>
+                </div>
+
+                <div className="billingToggle">
+                    <span style={{ color: billingCycle === 'monthly' ? 'var(--primary)' : 'var(--text-muted)' }}>Monthly</span>
+                    <div 
+                        className="toggleContainer" 
+                        onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
+                    >
+                        <div className={`toggleBtn ${billingCycle === 'monthly' ? 'active' : ''}`}>Monthly</div>
+                        <div className={`toggleBtn ${billingCycle === 'yearly' ? 'active' : ''}`}>Yearly (-20%)</div>
+                    </div>
+                    <span style={{ color: billingCycle === 'yearly' ? 'var(--primary)' : 'var(--text-muted)' }}>Yearly</span>
+                </div>
+
+                <div className="pricingGrid">
+                    <div className="pricingCard">
+                        <h3>Starter</h3>
+                        <p style={{ color: 'var(--text-dim)', fontSize: '0.85rem' }}>For casual conversations</p>
+                        <div className="pricingPrice">
+                            <span className="priceVal">$0</span>
+                            <span className="pricePeriod">/forever</span>
+                        </div>
+                        <ul>
+                            <li>Up to 4 participants</li>
+                            <li>40-minute call duration limit</li>
+                            <li>Basic in-call sidebar chat</li>
+                            <li>No card registration needed</li>
+                        </ul>
+                        <button className="btn-pricing" onClick={() => router("/auth")}>Get Started</button>
+                    </div>
+
+                    <div className="pricingCard popular">
+                        <span className="popularBadge">Most Popular</span>
+                        <h3>Pro Professional</h3>
+                        <p style={{ color: 'var(--text-muted)', opacity: 0.8, fontSize: '0.85rem' }}>For growing startup teams</p>
+                        <div className="pricingPrice">
+                            <span className="priceVal">{billingCycle === 'monthly' ? '$15' : '$12'}</span>
+                            <span className="pricePeriod">/user/mo</span>
+                        </div>
+                        <ul>
+                            <li>Up to 100 participants</li>
+                            <li>Unlimited meeting duration</li>
+                            <li>High quality HD screen sharing</li>
+                            <li>Saves up to 30 meeting logs</li>
+                            <li>Priority chat customer support</li>
+                        </ul>
+                        <button className="btn-pricing" onClick={() => router("/auth")}>Go Pro</button>
+                    </div>
+
+                    <div className="pricingCard">
+                        <h3>Enterprise</h3>
+                        <p style={{ color: 'var(--text-dim)', fontSize: '0.85rem' }}>For large organizational work</p>
+                        <div className="pricingPrice">
+                            <span className="priceVal">{billingCycle === 'monthly' ? '$39' : '$31'}</span>
+                            <span className="pricePeriod">/user/mo</span>
+                        </div>
+                        <ul>
+                            <li>Unlimited participants</li>
+                            <li>Custom security integrations</li>
+                            <li>Dedicated room servers</li>
+                            <li>Full transcript logs sync</li>
+                            <li>24/7 account manager support</li>
+                        </ul>
+                        <button className="btn-pricing" onClick={() => alert("Please contact sales at sales@meetsphere.com to set up Enterprise custom servers!")}>Contact Sales</button>
                     </div>
                 </div>
             </section>
