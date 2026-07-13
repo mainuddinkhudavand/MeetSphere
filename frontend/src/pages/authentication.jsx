@@ -13,6 +13,7 @@ export default function Authentication() {
     const [message, setMessage] = useState('');
     const [formState, setFormState] = useState(0); // 0: Login, 1: Register
     const [open, setOpen] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const { handleRegister, handleLogin } = useContext(AuthContext);
 
@@ -97,13 +98,22 @@ export default function Authentication() {
 
                     <div className="inputGroup">
                         <label>Password</label>
-                        <input 
-                            type="password"
-                            placeholder="Enter password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
+                        <div className="passwordWrapper">
+                            <input 
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Enter password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                            <button 
+                                type="button" 
+                                className="passwordToggle" 
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                {showPassword ? "👁️" : "🙈"}
+                            </button>
+                        </div>
                     </div>
 
                     {error && <p className="authError">⚠️ {error}</p>}
