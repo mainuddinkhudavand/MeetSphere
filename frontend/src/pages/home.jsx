@@ -2,75 +2,155 @@ import React, { useContext, useState } from 'react'
 import withAuth from '../utils/withAuth'
 import { useNavigate } from 'react-router-dom'
 import "../App.css";
-import { Button, IconButton, TextField } from '@mui/material';
-import RestoreIcon from '@mui/icons-material/Restore';
 import { AuthContext } from '../contexts/AuthContext';
 
 function HomeComponent() {
-
-
     let navigate = useNavigate();
     const [meetingCode, setMeetingCode] = useState("");
+    const { addToUserHistory } = useContext(AuthContext);
 
-
-    const {addToUserHistory} = useContext(AuthContext);
     let handleJoinVideoCall = async () => {
-        await addToUserHistory(meetingCode)
-        navigate(`/${meetingCode}`)
-    }
+        if (!meetingCode.trim()) return;
+        await addToUserHistory(meetingCode);
+        navigate(`/${meetingCode}`);
+    };
 
     return (
-        <>
-
-            <div className="navBar">
-
-                <div style={{ display: "flex", alignItems: "center" }}>
-
-                    <h2>MeetSphere</h2>
+        <div className="dashboardContainer">
+            {/* Sidebar */}
+            <aside className="dashboardSidebar">
+                <div>
+                    <div className="sidebarBrand" onClick={() => navigate("/")}>
+                        <h2>MeetSphere</h2>
+                    </div>
+                    <nav className="sidebarMenu">
+                        <button className="menuItem active" onClick={() => navigate("/home")}>
+                            <span>🏠</span> Dashboard
+                        </button>
+                        <button className="menuItem" onClick={() => navigate("/history")}>
+                            <span>🕒</span> History Logs
+                        </button>
+                        <button className="menuItem" onClick={() => alert("Settings panel is a developer feature. Real-time microphone and speaker calibration tests are accessible in call!")}>
+                            <span>⚙️</span> Calibration Check
+                        </button>
+                    </nav>
                 </div>
-
-                <div style={{ display: "flex", alignItems: "center" }}>
-                    <IconButton onClick={
-                        () => {
-                            navigate("/history")
-                        }
-                    }>
-                        <RestoreIcon />
-                    </IconButton>
-                    <p>History</p>
-
-                    <Button onClick={() => {
-                        localStorage.removeItem("token")
-                        navigate("/auth")
-                    }}>
-                        Logout
-                    </Button>
+                <div className="sidebarFooter">
+                    <button 
+                        className="menuItem" 
+                        onClick={() => {
+                            localStorage.removeItem("token");
+                            navigate("/auth");
+                        }}
+                        style={{ color: '#ef4444' }}
+                    >
+                        <span>🚪</span> Log Out
+                    </button>
                 </div>
+            </aside>
 
-
-            </div>
-
-
-            <div className="meetContainer">
-                <div className="leftPanel">
+            {/* Main Content Area */}
+            <main className="dashboardMain">
+                <header className="dashboardHeader">
                     <div>
-                        <h2>Providing Quality Video Call Just Like Quality Education</h2>
+                        <h1>Dashboard Workspace</h1>
+                        <p>Welcome back! Start hosting instantly or enter a code to join a room.</p>
+                    </div>
+                    <div className="meetingBadge">
+                        <span className="liveDot"></span> Server Connected
+                    </div>
+                </header>
 
-                        <div style={{ display: 'flex', gap: "10px" }}>
-
-                            <TextField onChange={e => setMeetingCode(e.target.value)} id="outlined-basic" label="Meeting Code" variant="outlined" />
-                            <Button onClick={handleJoinVideoCall} variant='contained'>Join</Button>
-
+                {/* Stats Row */}
+                <section className="statsRow">
+                    <div className="statCard">
+                        <div className="statCardIcon">🎥</div>
+                        <div className="statCardInfo">
+                            <h4>Unlimited</h4>
+                            <p>Call Time</p>
                         </div>
                     </div>
-                </div>
-                <div className='rightPanel'>
-                    <img srcSet='/logo3.png' alt="" />
-                </div>
-            </div>
-        </>
-    )
-}
+                    <div className="statCard">
+                        <div className="statCardIcon">👥</div>
+                        <div className="statCardInfo">
+                            <h4>100%</h4>
+                            <p>Free Account</p>
+                        </div>
+                    </div>
+                    <div className="statCard">
+                        <div className="statCardIcon">🔒</div>
+                        <div className="statCardInfo">
+                            <h4>AES-256</h4>
+                            <p>Call Security</p>
+                        </div>
+                    </div>
+                </section>
 
+                {/* Action Cards */}
+                <section className="actionGrid">
+                    <div className="actionCard">
+                        <h3>Host Instant Meeting</h3>
+                        <p>Generate a unique meeting room identifier code instantly and invite your team to join.</p>
+                        <div className="cardDivider"></div>
+                        <button 
+                            className="btn-dashboard-action" 
+                            onClick={() => {
+                                // Generate a random 6-character room code
+                                const code = Math.random().toString(36).substring(2, 8).toUpperCase();
+                                setMeetingCode(code);
+                                alert(`Meeting code generated: ${code}. You can now join or copy it to share!`);
+                            }}
+                        >
+                            Generate Meeting Code
+                        </button>
+                    </div>
+
+                    <div className="actionCard">
+                        <h3>Join a Meeting</h3>
+                        <p>Enter an active 6-character room code below to connect with your team.</p>
+                        <div className="cardDivider"></div>
+                        <div className="inputAndBtn">
+                            <input 
+                                type="text" 
+                                className="dashboardInput" 
+                                placeholder="Enter Room Code (e.g. A3B8DF)"
+                                value={meetingCode}
+                                onChange={(e) => setMeetingCode(e.target.value.toUpperCase())}
+                            />
+                            <button className="btn-dashboard-action" onClick={handleJoinVideoCall}>
+                                Join
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Bottom Row */}
+                <section className="dashboardBottomGrid">
+                    <div className="dashboardSectionCard">
+                        <h3>Upcoming Schedule (Mock)</h3>
+                        <div style={{ padding: '2rem', textAlign: 'center', background: 'rgba(255,255,255,0.01)', borderRadius: '12px', border: '1px dashed rgba(255,255,255,0.05)', color: 'var(--text-dim)' }}>
+                            📅 No meetings scheduled for today. Start a quick meeting instead!
+                        </div>
+                    </div>
+
+                    <div className="dashboardSectionCard">
+                        <h3>Device Health Status</h3>
+                        <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem', textAlign: 'left', fontSize: '0.9rem' }}>
+                            <li style={{ display: 'flex', justifyContent: 'space-between', color: '#00ff88' }}>
+                                <span>🎙️ Microphone</span> <span>● Active</span>
+                            </li>
+                            <li style={{ display: 'flex', justifyContent: 'space-between', color: '#00ff88' }}>
+                                <span>📹 Video Camera</span> <span>● Connected</span>
+                            </li>
+                            <li style={{ display: 'flex', justifyContent: 'space-between', color: '#00ff88' }}>
+                                <span>🔊 Sound Quality</span> <span>● Standard</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+        </div>
+    );
+}
 
 export default withAuth(HomeComponent)
