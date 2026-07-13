@@ -63,6 +63,17 @@ export default function LandingPage() {
         setActiveFaq(activeFaq === index ? null : index);
     };
 
+    // Newsletter states
+    const [newsletterEmail, setNewsletterEmail] = useState('');
+    const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
+
+    const handleSubscribe = (e) => {
+        e.preventDefault();
+        if (!newsletterEmail.trim()) return;
+        setNewsletterSubmitted(true);
+        setNewsletterEmail('');
+    };
+
     const nextTestimonial = () => {
         setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     };
@@ -486,6 +497,34 @@ export default function LandingPage() {
                             </div>
                         </div>
                     ))}
+                </div>
+            </section>
+
+            {/* Newsletter Section */}
+            <section className="newsletterSection">
+                <div className="newsletterContainer">
+                    <h2>Stay in the <span className="text-gradient">Loop</span></h2>
+                    <p>Subscribe to our newsletter for major design updates, developer logs, and discount alerts.</p>
+                    
+                    {newsletterSubmitted ? (
+                        <div style={{ color: '#00ff88', fontWeight: 600, padding: '1rem', background: 'rgba(0, 200, 100, 0.1)', borderRadius: '12px', width: 'fit-content', margin: '0 auto' }}>
+                            ✓ Thank you! You have successfully subscribed to the newsletter.
+                        </div>
+                    ) : (
+                        <form onSubmit={handleSubscribe} className="newsletterForm">
+                            <input 
+                                type="email" 
+                                className="newsletterInput" 
+                                placeholder="Enter your email address..." 
+                                value={newsletterEmail}
+                                onChange={(e) => setNewsletterEmail(e.target.value)}
+                                required
+                            />
+                            <button type="submit" className="btn-subscribe">
+                                Subscribe
+                            </button>
+                        </form>
+                    )}
                 </div>
             </section>
 
