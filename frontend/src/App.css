@@ -299,6 +299,1133 @@
   color: #080710;
 }
 
+/* ==========================================
+   LANDING PAGE SECTIONS STYLING
+   ========================================== */
+
+/* 1. Interactive Demo Section */
+.demoSection {
+  padding: 6rem 2rem;
+  background: rgba(255, 255, 255, 0.005);
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  text-align: center;
+}
+
+.sectionHeader {
+  margin-bottom: 3.5rem;
+}
+
+.sectionHeader h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.sectionHeader p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.demoContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 15, 25, 0.85);
+  box-shadow: var(--shadow-lg), 0 0 50px rgba(255, 152, 57, 0.03);
+  overflow: hidden;
+  display: flex;
+  height: 520px;
+}
+
+.demoVideoArea {
+  flex: 1;
+  background: #04040a;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.2rem;
+}
+
+.demoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.meetingBadge {
+  background: rgba(0, 200, 100, 0.12);
+  color: #00ff88;
+  padding: 0.35rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.meetingBadge .liveDot {
+  width: 7px;
+  height: 7px;
+  background-color: #00ff88;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #00ff88;
+  animation: pulse-glow 2s infinite;
+}
+
+.meetingCodeDisplay {
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+}
+
+.demoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  height: 68%;
+  margin-block: auto;
+}
+
+.videoFeed {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.videoFeed.active {
+  border-color: rgba(255, 152, 57, 0.2);
+}
+
+.feedName {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(8, 7, 16, 0.7);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: white;
+}
+
+.micIndicator {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  background: rgba(8, 7, 16, 0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.8rem;
+}
+
+.micIndicator.muted {
+  color: #ff4444;
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.avatarFallback {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+}
+
+.avatarFallback.primary {
+  background: var(--primary-gradient);
+}
+
+.videoWaveform {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #020205;
+}
+
+.demoControls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.controlBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.controlBtn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.08);
+}
+
+.controlBtn.active {
+  background: var(--primary);
+  color: #080710;
+  border-color: transparent;
+}
+
+.controlBtn.hangup {
+  background: #ef4444;
+  border-color: transparent;
+}
+
+.controlBtn.hangup:hover {
+  background: #dc2626;
+}
+
+/* Chat Panel */
+.demoChatPanel {
+  width: 280px;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(12, 12, 20, 0.95);
+  display: flex;
+  flex-direction: column;
+}
+
+.chatPanelHeader {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: left;
+}
+
+.chatPanelHeader h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.chatMessages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.chatMsg {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 90%;
+}
+
+.chatMsg.self {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.msgName {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-bottom: 0.15rem;
+}
+
+.msgText {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--text-main);
+  text-align: left;
+}
+
+.chatMsg.self .msgText {
+  background: rgba(255, 152, 57, 0.12);
+  border-color: rgba(255, 152, 57, 0.2);
+  color: #ff9839;
+}
+
+.chatInputArea {
+  padding: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  gap: 0.4rem;
+}
+
+.chatInput {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 0.5rem;
+  color: white;
+  font-size: 0.8rem;
+  outline: none;
+}
+
+.chatInput:focus {
+  border-color: var(--primary);
+}
+
+.chatSendBtn {
+  background: var(--primary-gradient);
+  border: none;
+  color: #080710;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2. Features Grid Section */
+.featuresSection {
+  padding: 6rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.featureCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 152, 57, 0.2);
+  box-shadow: var(--shadow-md);
+}
+
+.featureIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: rgba(255, 152, 57, 0.1);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.featureCard h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-main);
+}
+
+.featureCard p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* 3. How It Works Section */
+.howItWorksSection {
+  padding: 6rem 2rem;
+  background: rgba(255, 255, 255, 0.005);
+}
+
+.roadmapContainer {
+  max-width: 900px;
+  margin: 4rem auto 0 auto;
+  position: relative;
+}
+
+.roadmapContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--primary) 0%, var(--secondary) 100%);
+  opacity: 0.2;
+  transform: translateX(-50%);
+}
+
+.roadmapStep {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+  width: 100%;
+}
+
+.roadmapStep:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.roadmapContent {
+  width: 42%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: left;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.roadmapContent:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.roadmapNumber {
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  background: var(--primary-gradient);
+  color: #080710;
+  font-weight: 800;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(255, 152, 57, 0.3);
+}
+
+.roadmapStep:nth-child(even) .roadmapNumber {
+  background: var(--secondary-gradient);
+  box-shadow: 0 4px 10px rgba(168, 85, 247, 0.3);
+}
+
+.roadmapContent h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.roadmapContent p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.roadmapDot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #080710;
+  border: 4px solid var(--primary);
+  z-index: 10;
+}
+
+.roadmapStep:nth-child(even) .roadmapDot {
+  border-color: var(--secondary);
+}
+
+/* 4. Testimonials Slider */
+.testimonialsSection {
+  padding: 6rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sliderContainer {
+  margin-top: 3rem;
+  position: relative;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 3rem 4rem;
+}
+
+.testimonialCard {
+  transition: opacity 0.5s ease;
+}
+
+.testimonialQuote {
+  font-size: 1.4rem;
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: var(--text-main);
+  position: relative;
+}
+
+.testimonialQuote::before {
+  content: "“";
+  font-size: 5rem;
+  color: rgba(255, 152, 57, 0.1);
+  position: absolute;
+  top: -40px;
+  left: -20px;
+}
+
+.testimonialUser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.userAvatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--secondary-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+}
+
+.userMeta h4 {
+  font-size: 1rem;
+  margin: 0;
+  text-align: left;
+}
+
+.userMeta p {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin: 0;
+  text-align: left;
+}
+
+.sliderControls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.sliderBtn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.sliderBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--primary);
+}
+
+/* 5. Pricing Section */
+.pricingSection {
+  padding: 6rem 2rem;
+  background: rgba(255, 255, 255, 0.005);
+}
+
+.billingToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+.toggleContainer {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.3rem;
+  border-radius: 50px;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  width: 200px;
+}
+
+.toggleBtn {
+  flex: 1;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  z-index: 10;
+  transition: color 0.3s ease;
+}
+
+.toggleBtn.active {
+  color: #080710;
+  background: var(--primary-gradient);
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pricingCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.pricingCard.popular {
+  border-color: rgba(255, 152, 57, 0.4);
+  background: rgba(255, 152, 57, 0.01);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 0 30px rgba(255, 152, 57, 0.05);
+  transform: translateY(-8px);
+}
+
+.popularBadge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-gradient);
+  color: #080710;
+  padding: 0.25rem 0.9rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.pricingCard h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.pricingPrice {
+  margin: 1.5rem 0;
+}
+
+.priceVal {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.pricePeriod {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+.pricingCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.pricingCard li {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pricingCard li::before {
+  content: "✓";
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.pricingCard.popular li::before {
+  color: var(--primary);
+}
+
+.btn-pricing {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: block;
+}
+
+.btn-pricing:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.pricingCard.popular .btn-pricing {
+  background: var(--primary-gradient);
+  border-color: transparent;
+  color: #080710;
+  box-shadow: 0 4px 15px rgba(255, 152, 57, 0.2);
+}
+
+.pricingCard.popular .btn-pricing:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 152, 57, 0.35);
+}
+
+/* 6. FAQ Accordion Section */
+.faqSection {
+  padding: 6rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faqContainer {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faqItem {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faqQuestion {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.faqQuestion:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.faqAnswer {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: left;
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+  margin-top: 0;
+  display: none;
+}
+
+.faqItem.active .faqAnswer {
+  display: block;
+}
+
+.faqIcon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.faqItem.active .faqIcon {
+  transform: rotate(45deg);
+  color: var(--primary);
+}
+
+/* 7. Newsletter Section */
+.newsletterSection {
+  padding: 6rem 2rem;
+}
+
+.newsletterContainer {
+  max-width: 750px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(255, 152, 57, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 4rem 3rem;
+  text-align: center;
+}
+
+.newsletterContainer h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.newsletterContainer p {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.newsletterForm {
+  display: flex;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.newsletterInput {
+  flex: 1;
+  background: rgba(8, 7, 16, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  padding: 0.9rem 1.5rem;
+  color: white;
+  outline: none;
+}
+
+.newsletterInput:focus {
+  border-color: var(--primary);
+}
+
+.btn-subscribe {
+  background: var(--primary-gradient);
+  color: #080710;
+  border: none;
+  font-weight: 700;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-subscribe:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 152, 57, 0.3);
+}
+
+/* 8. Footer Section */
+.footerSection {
+  background: rgba(5, 5, 8, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 5rem 3rem 2rem 3rem;
+}
+
+.footerGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.footerBrand h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footerBrand p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  max-width: 250px;
+}
+
+.footerSocials {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.socialIcon:hover {
+  background: var(--primary-gradient);
+  color: #080710;
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+
+.footerCol h4 {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: left;
+}
+
+.footerCol ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  text-align: left;
+}
+
+.footerCol a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.footerCol a:hover {
+  color: var(--primary);
+}
+
+.footerBottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerBottom p {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footerLinks a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s ease;
+}
+
+.footerLinks a:hover {
+  color: var(--primary);
+}
+
+/* ==========================================
+   AUTHENTICATION PAGE STYLING
+   ========================================== */
+.authPageContainer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #080710;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.authLeftGlow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.15;
+  top: -100px;
+  left: -100px;
+}
+
+.authRightGlow {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: var(--secondary-gradient);
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.12;
+  bottom: -150px;
+  right: -150px;
+}
+
+.authCard {
+  width: 420px;
+  padding: 3rem 2.5rem;
+  border-radius: 24px;
+  text-align: center;
+  z-index: 10;
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(255, 152, 57, 0.03);
+}
+
+.authLogo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  display: inline-block;
+}
+
+.authTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.authSubtitle {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 2rem;
+}
+
+.authTabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.3rem;
+  border-radius: 50px;
+  margin-bottom: 2rem;
+}
+
+.authTabBtn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.authTabBtn.active {
+  color: #080710;
+  background: var(--primary-gradient);
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.inputGroup label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.inputGroup input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0.8rem 1.2rem;
+  color: white;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.inputGroup input:focus {
+  border-color: rgba(255, 152, 57, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 15px rgba(255, 152, 57, 0.08);
+}
+
+.authError {
+  font-size: 0.8rem;
+  color: #ef4444;
+  text-align: left;
+  margin: 0;
+}
+
+.authSubmitBtn {
+  background: var(--primary-gradient);
+  color: #080710;
+  border: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.9rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 152, 57, 0.25);
+  margin-top: 0.5rem;
+}
+
+.authSubmitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 152, 57, 0.4);
+}
+
 .navBar {
   display: flex;
   align-items: center;
