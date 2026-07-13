@@ -18,7 +18,22 @@ export default function Authentication() {
     const { handleRegister, handleLogin } = useContext(AuthContext);
 
     let handleAuth = async () => {
+        // Client side validation
+        if (!username || username.trim().length < 3) {
+            setError("Username must be at least 3 characters long.");
+            return;
+        }
+        if (!password || password.length < 6) {
+            setError("Password must be at least 6 characters long.");
+            return;
+        }
+        if (formState === 1 && (!name || name.trim().length < 2)) {
+            setError("Please enter a valid full name (minimum 2 characters).");
+            return;
+        }
+
         try {
+            setError("");
             if (formState === 0) {
                 await handleLogin(username, password);
             }
