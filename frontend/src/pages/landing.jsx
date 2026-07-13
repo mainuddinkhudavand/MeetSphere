@@ -38,6 +38,30 @@ export default function LandingPage() {
     ];
     const [currentTestimonial, setCurrentTestimonial] = useState(0);
     const [billingCycle, setBillingCycle] = useState('monthly');
+    const [activeFaq, setActiveFaq] = useState(null);
+
+    const faqs = [
+        {
+            question: "Is MeetSphere free to use?",
+            answer: "Yes! MeetSphere offers a fully-functional Starter free tier where you can hold calls for up to 4 participants with a 40-minute duration limit."
+        },
+        {
+            question: "How do I invite teammates to a call?",
+            answer: "Simply share your custom meeting room code with them. They can type it in their home dashboard or join directly as a guest."
+        },
+        {
+            question: "Can I share my screen and application tabs?",
+            answer: "Absolutely. Screen sharing is supported natively via WebRTC. You can share your entire desktop, a single application window, or a specific browser tab in high definition."
+        },
+        {
+            question: "Do I need to download any desktop app?",
+            answer: "No! MeetSphere is a web-native application that runs directly inside modern web browsers (Chrome, Firefox, Safari, Edge) without requiring any browser plugins or installations."
+        }
+    ];
+
+    const toggleFaq = (index) => {
+        setActiveFaq(activeFaq === index ? null : index);
+    };
 
     const nextTestimonial = () => {
         setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
@@ -440,6 +464,28 @@ export default function LandingPage() {
                         </ul>
                         <button className="btn-pricing" onClick={() => alert("Please contact sales at sales@meetsphere.com to set up Enterprise custom servers!")}>Contact Sales</button>
                     </div>
+                </div>
+            </section>
+
+            {/* FAQ Section */}
+            <section id="faqs" className="faqSection">
+                <div className="sectionHeader">
+                    <h2>Frequently Asked <span className="text-gradient">Questions</span></h2>
+                    <p>Got questions? We have answers. If you don't find what you are looking for, contact our support.</p>
+                </div>
+
+                <div className="faqContainer">
+                    {faqs.map((faq, i) => (
+                        <div key={i} className={`faqItem ${activeFaq === i ? 'active' : ''}`}>
+                            <div className="faqQuestion" onClick={() => toggleFaq(i)}>
+                                <span>{faq.question}</span>
+                                <span className="faqIcon">+</span>
+                            </div>
+                            <div className="faqAnswer">
+                                {faq.answer}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </section>
 
