@@ -1726,6 +1726,45 @@
   font-weight: 700;
 }
 
+/* History Page Styling */
+.historyTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.historyTable th {
+  padding: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.historyTable td {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  font-size: 0.9rem;
+}
+
+.historyTable tr:hover {
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.statusTag {
+  padding: 0.25rem 0.6rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.statusTag.completed {
+  background: rgba(0, 200, 100, 0.1);
+  color: #00ff88;
+}
+
 .navBar {
   display: flex;
   align-items: center;
