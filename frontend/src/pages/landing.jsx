@@ -186,7 +186,7 @@ export default function LandingPage() {
                     <p>Try out the mock room controls below. Toggle camera, mute audio, and interact with the chat panel.</p>
                 </div>
 
-                <div className="demoContainer">
+                <div className="demoContainer glassy-3d">
                     <div className="demoVideoArea">
                         <div className="demoHeader">
                             <div className="meetingBadge">
@@ -379,7 +379,7 @@ export default function LandingPage() {
                 </div>
 
                 <div className="sliderContainer">
-                    <div className="testimonialCard">
+                    <div className="testimonialCard glassy-3d">
                         <p className="testimonialQuote">
                             "{testimonials[currentTestimonial].quote}"
                         </p>
@@ -425,7 +425,7 @@ export default function LandingPage() {
                 </div>
 
                 <div className="pricingGrid">
-                    <div className="pricingCard">
+                    <div className="pricingCard glassy-3d">
                         <h3>Starter</h3>
                         <p style={{ color: 'var(--text-dim)', fontSize: '0.85rem' }}>For casual conversations</p>
                         <div className="pricingPrice">
@@ -441,7 +441,7 @@ export default function LandingPage() {
                         <button className="btn-pricing" onClick={() => router("/auth")}>Get Started</button>
                     </div>
 
-                    <div className="pricingCard popular">
+                    <div className="pricingCard popular glassy-3d">
                         <span className="popularBadge">Most Popular</span>
                         <h3>Pro Professional</h3>
                         <p style={{ color: 'var(--text-muted)', opacity: 0.8, fontSize: '0.85rem' }}>For growing startup teams</p>
@@ -459,7 +459,7 @@ export default function LandingPage() {
                         <button className="btn-pricing" onClick={() => router("/auth")}>Go Pro</button>
                     </div>
 
-                    <div className="pricingCard">
+                    <div className="pricingCard glassy-3d">
                         <h3>Enterprise</h3>
                         <p style={{ color: 'var(--text-dim)', fontSize: '0.85rem' }}>For large organizational work</p>
                         <div className="pricingPrice">
@@ -487,7 +487,7 @@ export default function LandingPage() {
 
                 <div className="faqContainer">
                     {faqs.map((faq, i) => (
-                        <div key={i} className={`faqItem ${activeFaq === i ? 'active' : ''}`}>
+                        <div key={i} className={`faqItem glassy-3d ${activeFaq === i ? 'active' : ''}`}>
                             <div className="faqQuestion" onClick={() => toggleFaq(i)}>
                                 <span>{faq.question}</span>
                                 <span className="faqIcon">+</span>
