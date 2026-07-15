@@ -43,6 +43,26 @@ A state-of-the-art, high-fidelity video conferencing and team collaboration plat
 
 ---
 
+## 🌟 Newly Added Features
+
+### 👤 User Profiles & Personalization
+- **Screen Identity**: Customize your display name, biography, and pick from a gallery of modern avatar emojis.
+- **Accent Glow Themes**: Choose a custom accent color (Warm Sunset, Cyber Purple, Deep Blue, Emerald Mint) which instantly propagates as a 3D glow theme throughout the application interface.
+- **Custom Status**: Set your status to Active, Away, Do Not Disturb, or in deep coding flow.
+
+### 📱 Responsive Mobile Display Settings
+- **Adaptive Navigation**: On mobile displays, the sidebar slides away and is replaced by a glassy bottom navigation sheet and floating header bar.
+- **Responsive Media Grid**: Video conference layouts use flexwrap grids that dynamically fit mobile screen dimensions.
+
+### 🧘 Synced Zen Workspace (Call Sidebar)
+- **📝 Collaborative Notes**: A shared markdown notepad that synchronizes in real-time with all meeting participants over WebSockets.
+- **⏱️ Pomodoro Focus Timer**: A shared Pomodoro study timer to run joint study/focus sessions.
+- **🎵 Ambient Soundscapes**: A built-in local background sound mixer (Lo-Fi, Rain, Cafe, Forest Stream) with volume controls.
+- **🧊 Icebreaker Generator**: Instantly generate fun team-building icebreaker questions to start off meetings.
+- **📊 Synced Quick Polls**: Create and launch interactive polls; watch results update in real-time with automatic percentage bar graphs.
+
+---
+
 ## 🚀 How to Run the Frontend Locally
 
 1. Navigate to the frontend directory:
