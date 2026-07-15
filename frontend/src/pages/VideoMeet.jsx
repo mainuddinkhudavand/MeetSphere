@@ -49,16 +49,32 @@ export default function VideoMeetComponent() {
     let [offlineMode, setOfflineMode] = useState(false);
 
     // Zen Workspace States
+    // sidebarTab controls toggling between standard call Chat and Zen Focus Tools
     let [sidebarTab, setSidebarTab] = useState("chat"); // "chat" or "zen"
+    
+    // zenSubTab handles tab switching between Notes, Pomodoro, Soundscapes, Icebreakers, and Polls
     let [zenSubTab, setZenSubTab] = useState("notes"); // "notes", "pomodoro", "soundscape", "icebreaker", "polls"
+    
+    // notes stores the local collaborative markdown notes text
     let [notes, setNotes] = useState("");
-    let [pomodoroTime, setPomodoroTime] = useState(1500); // 25 mins in seconds
+    
+    // pomodoroTime counts down the focus timer session in seconds (default 25 minutes)
+    let [pomodoroTime, setPomodoroTime] = useState(1500); 
+    
+    // pomodoroActive handles starting/pausing the active countdown
     let [pomodoroActive, setPomodoroActive] = useState(false);
+    
+    // soundscapeSelected plays local atmospheric sound layers (none, lofi, rain, cafe, forest)
     let [soundscapeSelected, setSoundscapeSelected] = useState("none");
+    
+    // soundscapeVolume binds to the local audio gain slider
     let [soundscapeVolume, setSoundscapeVolume] = useState(0.3);
+    
+    // icebreakerQuestion stores the active icebreaker team-building prompt
     let [icebreakerQuestion, setIcebreakerQuestion] = useState("Click the button to generate a fun team icebreaker question!");
     
     // Poll States
+    // pollQuestion, pollOptions, and activePoll sync and model interactive meeting votes
     let [pollQuestion, setPollQuestion] = useState("");
     let [pollOptions, setPollOptions] = useState(["", ""]);
     let [activePoll, setActivePoll] = useState(null);
