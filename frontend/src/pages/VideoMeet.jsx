@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 import io from "socket.io-client";
 import styles from "../styles/videoComponent.module.css";
 import server from '../environment';
+import { AuthContext } from '../contexts/AuthContext';
 
 const server_url = server;
 var connections = {};
@@ -13,6 +14,7 @@ const peerConfigConnections = {
 };
 
 export default function VideoMeetComponent() {
+    const { userData, getUserProfile } = useContext(AuthContext);
     var socketRef = useRef();
     let socketIdRef = useRef();
     let localVideoref = useRef();
@@ -35,6 +37,20 @@ export default function VideoMeetComponent() {
     const videoRef = useRef([]);
 
     useEffect(() => {
+        const loadProfile = async () => {
+            const token = localStorage.getItem("token");
+            if (token) {
+                try {
+                    const profile = await getUserProfile(token);
+                    if (profile) {
+                        setUsername(profile.name || profile.username);
+                    }
+                } catch (e) {
+                    console.log("Could not load user profile inside lobby:", e);
+                }
+            }
+        };
+        loadProfile();
         getPermissions();
     }, []);
 
