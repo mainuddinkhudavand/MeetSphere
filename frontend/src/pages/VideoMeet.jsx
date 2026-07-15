@@ -290,6 +290,8 @@ export default function VideoMeetComponent() {
                         newVotes[data.optionIndex] = (newVotes[data.optionIndex] || 0) + 1;
                         return { ...prev, votes: newVotes };
                     });
+                } else if (type === "icebreaker") {
+                    setIcebreakerQuestion(data);
                 }
             });
 
@@ -469,6 +471,27 @@ export default function VideoMeetComponent() {
             }
             return updatedPoll;
         });
+    };
+
+    const icebreakers = [
+        "If you could have dinner with any historical figure, who would it be and why?",
+        "What is the most interesting thing you have in your workspace right now?",
+        "If you had to live in a video game for a week, which one would it be?",
+        "What is your absolute favorite coding snack or beverage?",
+        "If you could immediately master any programming language, what would it be?",
+        "What is the most unique app on your phone that you actually use?",
+        "Would you rather work in an office with a slide, or work from a beach house?",
+        "What is your favorite lo-fi track or music genre to listen to while working?",
+        "If you could travel to any country in the world tomorrow, where would you go?"
+    ];
+
+    const generateIcebreaker = () => {
+        const idx = Math.floor(Math.random() * icebreakers.length);
+        const question = icebreakers[idx];
+        setIcebreakerQuestion(question);
+        if (!offlineMode && socketRef.current) {
+            socketRef.current.emit("action-broadcast", "icebreaker", question);
+        }
     };
 
     let handleVideo = () => {
