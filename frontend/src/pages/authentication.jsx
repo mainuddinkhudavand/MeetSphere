@@ -59,7 +59,7 @@ export default function Authentication() {
             <div className="authLeftGlow"></div>
             <div className="authRightGlow"></div>
             
-            <div className="authCard glass-panel">
+            <div className="authCard glass-panel glassy-3d animate-float">
                 <div className="authLogo" onClick={() => navigate("/")}>
                     MeetSphere
                 </div>
