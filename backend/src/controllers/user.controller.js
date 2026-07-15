@@ -97,5 +97,54 @@ const addToHistory = async (req, res) => {
     }
 }
 
+const getUserProfile = async (req, res) => {
+    const { token } = req.query;
 
-export { login, register, getUserHistory, addToHistory }
+    try {
+        const user = await User.findOne({ token: token });
+        if (!user) {
+            return res.status(httpStatus.NOT_FOUND).json({ message: "User Not Found" });
+        }
+        res.json({
+            name: user.name,
+            username: user.username,
+            avatar: user.avatar || "👤",
+            bio: user.bio || "Hello! I am using MeetSphere.",
+            status: user.status || "Active",
+            accentColor: user.accentColor || "#ff9839"
+        });
+    } catch (e) {
+        res.status(500).json({ message: `Something went wrong ${e}` });
+    }
+}
+
+const updateUserProfile = async (req, res) => {
+    const { token, name, avatar, bio, status, accentColor } = req.body;
+
+    try {
+        const user = await User.findOne({ token: token });
+        if (!user) {
+            return res.status(httpStatus.NOT_FOUND).json({ message: "User Not Found" });
+        }
+
+        if (name !== undefined) user.name = name;
+        if (avatar !== undefined) user.avatar = avatar;
+        if (bio !== undefined) user.bio = bio;
+        if (status !== undefined) user.status = status;
+        if (accentColor !== undefined) user.accentColor = accentColor;
+
+        await user.save();
+        res.json({ message: "Profile updated successfully", user: {
+            name: user.name,
+            username: user.username,
+            avatar: user.avatar,
+            bio: user.bio,
+            status: user.status,
+            accentColor: user.accentColor
+        }});
+    } catch (e) {
+        res.status(500).json({ message: `Something went wrong ${e}` });
+    }
+}
+
+export { login, register, getUserHistory, addToHistory, getUserProfile, updateUserProfile }
