@@ -1,6 +1,6 @@
 import axios from "axios";
 import httpStatus from "http-status";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import server from "../environment";
 
@@ -51,12 +51,54 @@ export const AuthProvider = ({ children }) => {
 
             if (request.status === httpStatus.OK) {
                 localStorage.setItem("token", request.data.token);
+                await getUserProfile(request.data.token);
                 router("/home")
             }
         } catch (err) {
             throw err;
         }
     }
+
+    const getUserProfile = async (customToken) => {
+        const activeToken = customToken || localStorage.getItem("token");
+        if (!activeToken) return null;
+        try {
+            let request = await client.get("/profile", {
+                params: {
+                    token: activeToken
+                }
+            });
+            if (request.status === httpStatus.OK) {
+                setUserData(request.data);
+            }
+            return request.data;
+        } catch (err) {
+            console.error("Failed to load profile:", err);
+            return null;
+        }
+    }
+
+    const updateUserProfile = async (profileData) => {
+        try {
+            let request = await client.put("/profile", {
+                token: localStorage.getItem("token"),
+                ...profileData
+            });
+            if (request.status === httpStatus.OK) {
+                setUserData(request.data.user);
+            }
+            return request.data;
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            getUserProfile(token);
+        }
+    }, []);
 
     const getHistoryOfUser = async () => {
         try {
@@ -86,7 +128,7 @@ export const AuthProvider = ({ children }) => {
 
 
     const data = {
-        userData, setUserData, addToUserHistory, getHistoryOfUser, handleRegister, handleLogin
+        userData, setUserData, addToUserHistory, getHistoryOfUser, handleRegister, handleLogin, getUserProfile, updateUserProfile
     }
 
     return (
