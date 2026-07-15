@@ -239,3 +239,222 @@
     justify-content: center;
     font-weight: bold;
 }
+
+/* Workspace Tabs */
+.workspaceTabs {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.2rem;
+}
+
+.workspaceTabBtn {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    padding: 0.5rem 0.8rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.workspaceTabBtn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: white;
+}
+
+.workspaceTabBtn.active {
+    background: rgba(var(--primary-rgb), 0.15);
+    border-color: var(--primary);
+    color: var(--primary);
+    box-shadow: 0 0 12px rgba(var(--primary-rgb), 0.25);
+}
+
+/* Zen Workspace Layout */
+.zenWorkspaceArea {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding-right: 0.25rem;
+}
+
+.zenSubTabs {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.4rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.zenSubTabBtn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: all 0.2s ease;
+}
+
+.zenSubTabBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.zenSubTabBtn.active {
+    background: var(--primary-gradient);
+    border-color: transparent;
+    color: #080710;
+    box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.4);
+    transform: scale(1.05) translateY(-2px);
+}
+
+.zenPanelContent h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.subtext {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+/* Notes Tool */
+.notesTextarea {
+    width: 100%;
+    height: 380px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    color: white;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    outline: none;
+    resize: none;
+    transition: border-color 0.2s ease;
+}
+
+.notesTextarea:focus {
+    border-color: var(--primary);
+}
+
+/* Pomodoro Timer Tool */
+.timerClock {
+    font-size: 3rem;
+    font-weight: 800;
+    font-family: var(--font-display);
+    color: white;
+    text-align: center;
+    background: radial-gradient(circle, rgba(var(--primary-rgb), 0.15) 0%, transparent 80%);
+    padding: 2.5rem 1.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 15px rgba(var(--primary-rgb), 0.5);
+}
+
+.timerControls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.timerControls button {
+    flex: 1;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Soundscapes Tool */
+.soundOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.soundOptions button {
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Polls and Icebreakers */
+.icebreakerCard {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.createPollArea input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    color: white;
+    font-size: 0.85rem;
+    outline: none;
+    margin-bottom: 0.6rem;
+    transition: border-color 0.2s ease;
+}
+
+.createPollArea input:focus {
+    border-color: var(--primary);
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+    .meetVideoContainer {
+        flex-direction: column;
+        padding-bottom: 0;
+    }
+
+    .chatRoom {
+        width: 100vw !important;
+        height: 50vh !important;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .videoMainArea {
+        height: 50vh !important;
+        padding: 1rem;
+    }
+
+    .buttonContainers {
+        bottom: 10px;
+        padding: 0.5rem 1rem;
+        gap: 0.6rem;
+    }
+
+    .buttonContainers button {
+        width: 38px;
+        height: 38px;
+        font-size: 0.85rem;
+    }
+
+    .meetUserVideo {
+        width: 100px;
+        bottom: 65px;
+        right: 1rem;
+    }
+}
