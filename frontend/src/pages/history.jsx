@@ -31,6 +31,13 @@ export default function History() {
 
     return (
         <div className="dashboardContainer">
+            {/* Mobile Header */}
+            <header className="mobileHeader glass-panel">
+                <div className="mobileHeaderBrand" onClick={() => navigate("/")}>
+                    <h2>MeetSphere</h2>
+                </div>
+            </header>
+
             {/* Sidebar */}
             <aside className="dashboardSidebar">
                 <div>
@@ -41,10 +48,13 @@ export default function History() {
                         <button className="menuItem" onClick={() => navigate("/home")}>
                             <span>🏠</span> Dashboard
                         </button>
+                        <button className="menuItem" onClick={() => navigate("/home", { state: { activeTab: "profile" } })}>
+                            <span>👤</span> My Profile
+                        </button>
                         <button className="menuItem active" onClick={() => navigate("/history")}>
                             <span>🕒</span> History Logs
                         </button>
-                        <button className="menuItem" onClick={() => alert("Settings panel is a developer feature. Real-time microphone and speaker calibration tests are accessible in call!")}>
+                        <button className="menuItem" onClick={() => alert("Calibration Panel: Real-time tests are active inside meeting rooms!")}>
                             <span>⚙️</span> Calibration Check
                         </button>
                     </nav>
@@ -72,7 +82,7 @@ export default function History() {
                     </div>
                 </header>
 
-                <div className="dashboardSectionCard" style={{ width: '100%' }}>
+                <div className="dashboardSectionCard glass-panel glassy-3d" style={{ width: '100%' }}>
                     {meetings && meetings.length > 0 ? (
                         <div style={{ overflowX: 'auto' }}>
                             <table className="historyTable">
@@ -122,6 +132,33 @@ export default function History() {
                     )}
                 </div>
             </main>
+
+            {/* Mobile Bottom Navigation */}
+            <nav className="mobileBottomNav glass-panel">
+                <button className="mobileNavItem" onClick={() => navigate("/home")}>
+                    <span className="mobileNavIcon">🏠</span>
+                    <span className="mobileNavText">Home</span>
+                </button>
+                <button className="mobileNavItem" onClick={() => navigate("/home", { state: { activeTab: "profile" } })}>
+                    <span className="mobileNavIcon">👤</span>
+                    <span className="mobileNavText">Profile</span>
+                </button>
+                <button className="mobileNavItem active" onClick={() => navigate("/history")}>
+                    <span className="mobileNavIcon">🕒</span>
+                    <span className="mobileNavText">History</span>
+                </button>
+                <button 
+                    className="mobileNavItem" 
+                    onClick={() => {
+                        localStorage.removeItem("token");
+                        navigate("/auth");
+                    }}
+                    style={{ color: '#ef4444' }}
+                >
+                    <span className="mobileNavIcon">🚪</span>
+                    <span className="mobileNavText">Logout</span>
+                </button>
+            </nav>
         </div>
     );
 }
