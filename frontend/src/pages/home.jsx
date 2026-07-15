@@ -1,17 +1,24 @@
 import React, { useContext, useState, useEffect } from 'react'
 import withAuth from '../utils/withAuth'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import "../App.css";
 import { AuthContext } from '../contexts/AuthContext';
 
 function HomeComponent() {
     let navigate = useNavigate();
+    const location = useLocation();
     const [meetingCode, setMeetingCode] = useState("");
     const [generatedCode, setGeneratedCode] = useState("");
     const [copied, setCopied] = useState(false);
     const { addToUserHistory, userData, updateUserProfile } = useContext(AuthContext);
 
-    const [activeTab, setActiveTab] = useState("dashboard"); // "dashboard" or "profile"
+    const [activeTab, setActiveTab] = useState(location.state?.activeTab || "dashboard"); // "dashboard" or "profile"
+
+    useEffect(() => {
+        if (location.state?.activeTab) {
+            setActiveTab(location.state.activeTab);
+        }
+    }, [location.state]);
 
     // Profile field states
     const [profileName, setProfileName] = useState("");
